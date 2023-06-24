@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>博客搭建参考教程链接汇总</title>
-    <url>/2023/06/24/Blog01_Test/</url>
-    <content><![CDATA[<p>本博客基于Hexo框架搭建, 使用Github Page部署</p>
-<p>本文包含博客搭建过程中所参考的所有图文及视频链接, 用于分享和自用</p>
-<p>持续更新中</p>
-<hr>
-<p><a href="https://zhuanlan.zhihu.com/p/552639819">2022【保姆级教程】含泪搭建hexo博客</a><br>从开始到成功点亮</p>
-<p><a href="https://www.bilibili.com/video/BV16W411t7mq">使用Hexo博客搭建的个人博客，使用Next主题来进行优化改造</a><br>NexT主题的调教</p>
-]]></content>
-  </entry>
-  <entry>
     <title>CS1601H题解</title>
     <url>/2023/06/24/CS1601H%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文章发布SJTU-CS1601H-数据结构(荣誉) 2022-2023-2学期部分作业题目的AC代码及题解</p>
@@ -75,6 +64,17 @@
 
 <h3 id="11281"><a href="#11281" class="headerlink" title="11281"></a>11281</h3><p>典中典的下象棋问马能到哪的问题<br>使用bfs, 每次向外延展一层, 只需要记录搜的层数, 搜到目标点直接输出并返回令程序结束即可</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> mp[<span class="number">40</span>][<span class="number">40</span>];</span><br><span class="line"><span class="type">int</span> vis[<span class="number">40</span>][<span class="number">40</span>];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">p</span> &#123;</span><br><span class="line">    <span class="type">int</span> x, y;</span><br><span class="line">    <span class="built_in">p</span>(<span class="type">int</span> _x, <span class="type">int</span> _y):<span class="built_in">x</span>(_x), <span class="built_in">y</span>(_y)&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; m &gt;&gt; n;</span><br><span class="line">    <span class="type">int</span> m1, m2;</span><br><span class="line">    cin &gt;&gt; m1 &gt;&gt; m2;</span><br><span class="line">    <span class="type">int</span> dx[]=&#123;-m1, -m1, -m2, -m2, m2, m2, m1, m1&#125;;</span><br><span class="line">    <span class="type">int</span> dy[]=&#123;m2, -m2, m1, -m1, m1, -m1, m2, -m2&#125;;</span><br><span class="line">    <span class="type">int</span> si, sj, ei, ej;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;n; j++) &#123;</span><br><span class="line">            <span class="type">int</span> a;</span><br><span class="line">            cin &gt;&gt; a;</span><br><span class="line">            <span class="keyword">if</span> (a==<span class="number">1</span> || a==<span class="number">3</span> || a==<span class="number">4</span>) mp[i][j]=<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (a==<span class="number">3</span>) si=i, sj=j;</span><br><span class="line">            <span class="keyword">if</span> (a==<span class="number">4</span>) ei=i, ej=j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vis[si][sj]=<span class="number">1</span>;</span><br><span class="line">    queue&lt;p&gt; q;</span><br><span class="line">    <span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line">    q.<span class="built_in">push</span>(<span class="built_in">p</span>(si, sj));</span><br><span class="line">    <span class="keyword">auto</span> isLegal=[&amp;](<span class="type">int</span> x, <span class="type">int</span> y)-&gt;<span class="type">bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> x&gt;=<span class="number">0</span> &amp;&amp; x&lt;m &amp;&amp; y&gt;=<span class="number">0</span> &amp;&amp; y&lt;n;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">while</span>(!q.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        ans++;</span><br><span class="line">        <span class="type">int</span> N=q.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">while</span>(N--) &#123;</span><br><span class="line">            <span class="keyword">auto</span> p1=q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="type">int</span> x=p1.x, y=p1.y;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">8</span>; i++) &#123;</span><br><span class="line">                <span class="type">int</span> xx=x+dx[i], yy=y+dy[i];</span><br><span class="line">                <span class="keyword">if</span> (!<span class="built_in">isLegal</span>(xx, yy) || vis[xx][yy]==<span class="number">1</span> || mp[xx][yy]!=<span class="number">1</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (xx==ei &amp;&amp; yy==ej) &#123;</span><br><span class="line">                    cout &lt;&lt; ans;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                q.<span class="built_in">push</span>(<span class="built_in">p</span>(xx, yy));</span><br><span class="line">                vis[xx][yy]=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>博客搭建参考教程链接汇总</title>
+    <url>/2023/06/24/Blog01_Test/</url>
+    <content><![CDATA[<p>本博客基于Hexo框架搭建, 使用Github Page部署</p>
+<p>本文包含博客搭建过程中所参考的所有图文及视频链接, 用于分享和自用</p>
+<p>持续更新中</p>
+<hr>
+<p><a href="https://zhuanlan.zhihu.com/p/552639819">2022【保姆级教程】含泪搭建hexo博客</a><br>从开始到成功点亮</p>
+<p><a href="https://www.bilibili.com/video/BV16W411t7mq">使用Hexo博客搭建的个人博客，使用Next主题来进行优化改造</a><br>NexT主题的调教</p>
 ]]></content>
   </entry>
 </search>
