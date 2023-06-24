@@ -2564,13 +2564,6 @@ header.header {
     margin-bottom: 10px;
   }
 }
-body {
-  background-image: url("/bg.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: 50% 50%;
-}
 .content-wrap {
   opacity: 1;
 }
