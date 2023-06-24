@@ -2544,10 +2544,11 @@ header.header {
   }
 }
 body {
-  background-image: url("/images/bg.jpg");
+  background-image: url("/bg.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: cover;
+  background-position: 50% 50%;
 }
 .content-wrap {
   opacity: 1;
