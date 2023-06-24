@@ -2313,7 +2313,7 @@ mark.search-keyword {
 }
 header.header {
   background: var(--content-bg-color);
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 15px 15px 15px 15px;
   box-shadow: initial;
 }
 @media (max-width: 991px) {
@@ -2350,7 +2350,7 @@ header.header {
   }
 }
 .main-inner {
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 15px 15px 15px 15px;
   box-sizing: border-box;
   width: calc(100% - 252px);
 }
@@ -2491,7 +2491,7 @@ header.header {
 }
 .sidebar-inner {
   background: var(--content-bg-color);
-  border-radius: 20px;
+  border-radius: 15px;
   box-shadow: initial;
   box-sizing: border-box;
   color: var(--text-color);
@@ -2569,7 +2569,7 @@ header.header {
 }
 ​,
 .main-inner {
-  opacity: 0.9;
+  opacity: 1;
 }
 .sidebar {
   background-color: transparent;
